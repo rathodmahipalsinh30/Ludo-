@@ -66,6 +66,78 @@ Ludo-/
 
 ---
 
+## 💻 Download & Run on Your Laptop
+
+Follow these steps to get the game running on your own computer.
+
+### Step 1 — Install Git
+
+Git lets you download ("clone") the project from GitHub.
+
+| OS | Instructions |
+|---|---|
+| **Windows** | Download and install from [git-scm.com/downloads](https://git-scm.com/downloads). Keep all default options. |
+| **macOS** | Open Terminal and run `xcode-select --install`, **or** install via [Homebrew](https://brew.sh): `brew install git` |
+| **Linux (Ubuntu/Debian)** | `sudo apt update && sudo apt install git` |
+
+Verify installation:
+```bash
+git --version
+# e.g.  git version 2.44.0
+```
+
+### Step 2 — Install Node.js (version 18 or newer)
+
+Node.js runs the development server and build tools.  
+Download the **LTS** installer from 👉 [nodejs.org/en/download](https://nodejs.org/en/download/)
+
+Verify installation:
+```bash
+node --version   # e.g.  v20.11.0
+npm --version    # e.g.  10.2.4
+```
+
+### Step 3 — Clone (download) this repository
+
+Open a terminal / command prompt and run:
+
+```bash
+git clone https://github.com/rathodmahipalsinh30/Ludo-.git
+```
+
+This creates a folder called `Ludo-` in your current directory.
+
+### Step 4 — Enter the project folder
+
+```bash
+cd Ludo-
+```
+
+### Step 5 — Install project dependencies
+
+```bash
+npm install
+```
+
+This downloads all required packages into a `node_modules/` folder (takes ~30 seconds on first run).
+
+### Step 6 — Start the game in your browser
+
+```bash
+npm run dev
+```
+
+Then open your browser and go to **[http://localhost:5173](http://localhost:5173)** — the game will load instantly.
+
+---
+
+> **Don't have Git?**  You can also download the project as a ZIP file:
+> 1. Go to [github.com/rathodmahipalsinh30/Ludo-](https://github.com/rathodmahipalsinh30/Ludo-)
+> 2. Click the green **Code** button → **Download ZIP**
+> 3. Unzip the file, open a terminal inside that folder, then run **Steps 5 & 6** above.
+
+---
+
 ## 🛠 Tech Stack
 
 | Layer | Technology |

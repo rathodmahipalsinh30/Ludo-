@@ -3,7 +3,7 @@
  * React context + useReducer for the entire game state.
  * Exposes: state, dispatch, rollDice, moveToken, isMyTurn.
  */
-import React, { createContext, useContext, useReducer, useCallback, useRef } from 'react';
+import React, { createContext, useContext, useReducer, useCallback } from 'react';
 import { createInitialState, PHASES } from './GameState.js';
 import { applyRoll, applyMove, computeMovableTokens } from './rulesEngine.js';
 import rollDiceCrypto from './cryptoDice.js';

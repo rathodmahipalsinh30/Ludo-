@@ -1,0 +1,66 @@
+Act as an expert frontend game architect. You are using your highest level of adaptive thinking to build a complete, serverless, mobile-first 8-player Ludo game that perfectly mimics the "Ludo King" UI and rules.
+
+Core Tech Stack:
+
+Framework: React.js (initialized via Vite for fast building).
+
+Networking: peerjs for serverless WebRTC Peer-to-Peer multiplayer.
+
+Hosting: GitHub Pages (Ensure routing uses HashRouter or Vite base config).
+
+Styling: CSS Modules or Tailwind. Must be strictly responsive for portrait mobile screens.
+
+Architecture & Feature Requirements:
+
+1. The Board & UI (Ludo King Replica)
+
+Layout: An 8-player octagonal or 8-pointed star path. Replicate the Ludo King visual language: white path tiles with distinct borders, large rounded-square Home Bases, colored Home Columns, and Star icons for safe zones.
+
+Colors: Red, Blue, Green, Yellow, Orange, Purple, Pink, Cyan.
+
+Mobile Overlap Handling (CRITICAL): Since mobile screens are small, if multiple tokens land on the exact same tile, they must dynamically scale down and fan out (overlap UI) so the user can easily tap the specific token they want to move.
+
+Thumb-Friendly: Keep the dice roller and current player indicators anchored to the top/bottom of the screen.
+
+2. PeerJS Multiplayer State (The Network)
+
+No Backend: The game relies entirely on WebRTC.
+
+Host Logic: Player 1 clicks "Create Room". Generate a short alphanumeric ID. Player 1's browser becomes the authoritative "Server".
+
+Join Logic: Players 2-8 input the room ID to connect directly to Player 1.
+
+State Sync: When a peer rolls or moves, they send the action to the Host. The Host calculates the new board state, validates it, and broadcasts the updated JSON state to all connected peers.
+
+3. Unbiased Cryptographic Math
+
+Do not use standard Math.random().
+
+All dice rolls must be generated using the browser's Web Crypto API (window.crypto.getRandomValues) to ensure 100% mathematical fairness and eliminate the "rigged" feel.
+
+4. The Exact Rules Engine
+
+The Rule of 6: A token can only unlock from the home base on a roll of 6.
+
+Bonus Turns: A player gets one additional roll if they: 1) Roll a 6, 2) Kill an opponent's token, or 3) Move a token into the final center triangle.
+
+The Three 6s Penalty: If a player rolls three 6s in a row, their turn is skipped, no tokens move on the third roll, and the next player goes.
+
+Safe Zones: Tokens cannot be killed on their own starting tile, nor on the designated Star tiles.
+
+Relative Pathing: Track tokens using a "Relative Position" integer (e.g., 0 = Base, 1 = Start, 104 = Home). Map this relative integer to absolute board coordinates based on the player's color.
+
+5. Tactile Animations
+
+The Dice: CSS keyframes or sprite animation for a rapid 3D tumbling white cube effect before landing on the crypto-generated number. Tap "squish" effect.
+
+Active Player: A glowing, pulsing ring around the avatar/dice of the person whose turn it currently is.
+
+Execution Instructions for Claude:
+Do not write the entire codebase in a single response. Use your adaptive thinking to process this architecture, then reply with exactly the following:
+
+Confirmation: A brief acknowledgment of the architecture and the WebRTC/GitHub Pages constraints.
+
+Setup: The terminal commands to scaffold the Vite React project and install dependencies (peerjs, etc.).
+
+State Foundation: Write the initial GameState.js (or context provider) showing exactly how we will track the 8 players, their 32 tokens, and the relative board positions so the Host can broadcast it over PeerJS.
